@@ -382,6 +382,42 @@
   .avail-box p{ font-size:14.5px; color:#D9D4C6; line-height:1.7; margin-bottom:18px; }
   .avail-box .langs{ display:flex; gap:10px; flex-wrap:wrap; }
 
+  /* ---------- CONTACT FORM ---------- */
+  .form-box{
+    border:1px solid var(--line); padding:32px 30px; background:var(--ink-2);
+    margin-top:40px;
+  }
+  .form-box .gk{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--brass); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:22px; }
+  .form-row{ margin-bottom:20px; }
+  .form-row label{
+    display:block; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--text-lo); margin-bottom:8px;
+  }
+  .form-row input, .form-row textarea{
+    width:100%; background:var(--ink); border:1px solid var(--line); color:var(--text-hi);
+    font-family:'Inter', sans-serif; font-size:15px; padding:13px 14px;
+    transition: border-color .25s;
+  }
+  .form-row input:focus, .form-row textarea:focus{
+    outline:none; border-color:var(--brass);
+  }
+  .form-row textarea{ resize:vertical; min-height:110px; }
+  .form-submit{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.04em;
+    background:var(--brass); color:var(--ink); padding:14px 30px; border:none;
+    font-weight:500; width:100%;
+    transition: background .25s;
+  }
+  @media (hover:hover) and (pointer:fine){ .form-submit{ cursor:none; } }
+  .form-submit:hover{ background:#DDB65E; }
+  .form-status{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; margin-top:14px;
+    display:none;
+  }
+  .form-status.show{ display:block; }
+  .form-status.ok{ color:var(--teal); }
+  .form-status.err{ color:#C97A6A; }
+
   footer{
     margin-top:80px; padding:26px 0; border-top:1px solid var(--line);
     display:flex; justify-content:space-between; align-items:center;
@@ -606,6 +642,27 @@
         <div class="langs" style="margin-top:12px;"><span class="chip">English</span><span class="chip">Hindi</span><span class="chip">Urdu</span></div>
       </div>
     </div>
+
+    <div class="form-box reveal">
+      <div class="gk">Send A Message</div>
+      <form id="contact-form" action="https://formspree.io/f/mvkpqwkl" method="POST">
+        <div class="form-row">
+          <label for="cf-name">Your Name</label>
+          <input type="text" id="cf-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-row">
+          <label for="cf-email">Your Email</label>
+          <input type="email" id="cf-email" name="_replyto" required autocomplete="email">
+        </div>
+        <div class="form-row">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required placeholder="Tell me about the role or opportunity..."></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New message from portfolio site">
+        <button type="submit" class="form-submit" data-magnetic>Send Message →</button>
+        <p class="form-status" id="cf-status"></p>
+      </form>
+    </div>
     <footer>
       <span>© <span id="copyright-year">2026</span> Shah Mohammad Ahmad Farooqui</span>
       <span>Rudauli, Ayodhya · Uttar Pradesh</span>
@@ -687,6 +744,40 @@
     document.querySelectorAll('a, button, .card, .chip').forEach(function(el){
       el.addEventListener('mouseenter', function(){ ring.classList.add('hover'); });
       el.addEventListener('mouseleave', function(){ ring.classList.remove('hover'); });
+    });
+  }
+
+  /* ---------------- CONTACT FORM (Formspree AJAX) ---------------- */
+  var cf = document.getElementById('contact-form');
+  if(cf){
+    cf.addEventListener('submit', function(e){
+      e.preventDefault();
+      var status = document.getElementById('cf-status');
+      var btn = cf.querySelector('.form-submit');
+      var originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      fetch(cf.action, {
+        method: 'POST',
+        body: new FormData(cf),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response){
+        if(response.ok){
+          status.textContent = "Message sent — I'll get back to you soon!";
+          status.className = 'form-status show ok';
+          cf.reset();
+        } else {
+          status.textContent = 'Something went wrong. Please try emailing directly.';
+          status.className = 'form-status show err';
+        }
+      }).catch(function(){
+        status.textContent = 'Something went wrong. Please try emailing directly.';
+        status.className = 'form-status show err';
+      }).finally(function(){
+        btn.textContent = originalText;
+        btn.disabled = false;
+      });
     });
   }
 
