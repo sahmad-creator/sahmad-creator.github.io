@@ -266,34 +266,22 @@
     opacity:0; transition:opacity .3s;
   }
 
-  /* floating browser mockup — extra 3D layer in hero */
-  .mock-panel{
-    position:absolute; top:8%; right:2%; width:280px;
-    background: rgba(25,31,39,0.75);
-    border:1px solid var(--brass-soft);
-    backdrop-filter: blur(10px);
-    transform-style:preserve-3d;
-    transform: rotateX(8deg) rotateY(-16deg) rotateZ(1deg);
-    box-shadow: 0 40px 80px -30px rgba(0,0,0,0.7);
-    z-index:4;
-    animation: float-panel 6s ease-in-out infinite;
-    transition: transform .15s ease-out;
+  /* real 3D draggable device — rendered via its own three.js scene */
+  #device-canvas{
+    position:absolute; inset:0; z-index:4;
+    cursor: grab;
+    touch-action: none;
   }
-  @keyframes float-panel{
-    0%,100%{ transform: rotateX(8deg) rotateY(-16deg) rotateZ(1deg) translateY(0px); }
-    50%{ transform: rotateX(8deg) rotateY(-16deg) rotateZ(1deg) translateY(-14px); }
+  #device-canvas:active{ cursor: grabbing; }
+  .device-hint{
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.08em;
+    color:var(--text-lo); text-transform:uppercase; z-index:5;
+    display:flex; align-items:center; gap:8px; opacity:0.75;
+    transition:opacity .4s; pointer-events:none;
   }
-  .mock-bar{ display:flex; gap:6px; padding:12px 14px; border-bottom:1px solid var(--line); }
-  .mock-bar span{ width:8px; height:8px; border-radius:50%; background:var(--line); }
-  .mock-bar span:nth-child(1){ background:#C9A24B; }
-  .mock-body{ padding:18px 16px 22px; }
-  .mock-url{ font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--text-lo); margin-bottom:14px; }
-  .mock-line{ height:7px; background:var(--line); margin-bottom:8px; }
-  .mock-line.w60{ width:60%; }
-  .mock-line.w80{ width:80%; }
-  .mock-line.w40{ width:40%; }
-  .mock-chip-row{ display:flex; gap:6px; margin-top:14px; }
-  .mock-chip-row span{ font-size:9px; font-family:'IBM Plex Mono', monospace; border:1px solid var(--brass-soft); color:var(--brass); padding:3px 7px; }
+  .device-hint.fade{ opacity:0; }
+  .device-hint svg{ width:14px; height:14px; }
 
   .scroll-cue{
     position:absolute; bottom:34px; left:50%; transform:translateX(-50%); z-index:3;
@@ -457,7 +445,7 @@
     .navlinks{ display:none; }
     .hero-grid{ grid-template-columns:1fr; }
     .hero-visual{ height:340px; order:-1; }
-    .mock-panel{ width:220px; top:2%; right:0; }
+    .device-hint{ font-size:9px; }
     .section-head, .about-body{ grid-template-columns:1fr; }
     .stats .wrap{ grid-template-columns:1fr; }
     .stat{ border-left:none; border-top:1px solid var(--line); }
@@ -471,7 +459,6 @@
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
-    .mock-panel{ animation:none; }
   }
 
   a:focus-visible, button:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
@@ -561,17 +548,10 @@
       </div>
     </div>
     <div class="hero-visual" id="hero-visual">
-      <div class="mock-panel" id="mock-panel">
-        <div class="mock-bar"><span></span><span></span><span></span></div>
-        <div class="mock-body">
-          <div class="mock-url">shahfarooqui.dev</div>
-          <div class="mock-line w80"></div>
-          <div class="mock-line w60"></div>
-          <div class="mock-line w40"></div>
-          <div class="mock-chip-row">
-            <span>WordPress</span><span>SEO</span><span>Ads</span>
-          </div>
-        </div>
+      <canvas id="device-canvas"></canvas>
+      <div class="device-hint" id="device-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11V6a2 2 0 1 1 4 0v5m0-2a2 2 0 1 1 4 0v2m0 0v-1a2 2 0 1 1 4 0v6a6 6 0 0 1-6 6h-2a6 6 0 0 1-5.6-3.9L5 14.5c-.5-1 0-2 1-2.3.8-.2 1.6.1 2 .8l1 1.5"/></svg>
+        Drag to rotate
       </div>
     </div>
   </div>
@@ -905,20 +885,180 @@
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-  /* ---------------- HERO MOCK PANEL 3D TILT ---------------- */
-  var mockPanel = document.getElementById('mock-panel');
-  var heroVisual = document.getElementById('hero-visual');
-  if(mockPanel && heroVisual && !reduceMotion){
-    heroVisual.addEventListener('mousemove', function(e){
+  /* ---------------- REAL 3D DRAGGABLE DEVICE ---------------- */
+  (function(){
+    var canvas = document.getElementById('device-canvas');
+    var heroVisual = document.getElementById('hero-visual');
+    var hint = document.getElementById('device-hint');
+    if(!canvas || !heroVisual || !window.THREE) return;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 0.3, 7.2);
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha:true, antialias:true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    function sizeCanvas(){
       var r = heroVisual.getBoundingClientRect();
-      var x = (e.clientX - r.left)/r.width - 0.5;
-      var y = (e.clientY - r.top)/r.height - 0.5;
-      mockPanel.style.transform = 'rotateX('+(8 - y*14)+'deg) rotateY('+(-16 + x*14)+'deg) rotateZ(1deg)';
-    });
-    heroVisual.addEventListener('mouseleave', function(){
-      mockPanel.style.transform = '';
-    });
-  }
+      renderer.setSize(r.width, r.height);
+      camera.aspect = r.width / r.height;
+      camera.updateProjectionMatrix();
+    }
+    sizeCanvas();
+    window.addEventListener('resize', sizeCanvas);
+
+    // lighting — gives the bezel real shaded depth
+    scene.add(new THREE.AmbientLight(0x404850, 1.4));
+    var key = new THREE.DirectionalLight(0xffffff, 1.1);
+    key.position.set(3, 4, 5);
+    scene.add(key);
+    var rim = new THREE.DirectionalLight(0xC9A24B, 0.6);
+    rim.position.set(-4, -2, -3);
+    scene.add(rim);
+
+    // ---- build the "browser window" screen texture ----
+    var tex = document.createElement('canvas');
+    tex.width = 640; tex.height = 400;
+    var tctx = tex.getContext('2d');
+    function drawScreen(){
+      tctx.fillStyle = '#191F27';
+      tctx.fillRect(0,0,640,400);
+      // top bar
+      tctx.fillStyle = '#141920';
+      tctx.fillRect(0,0,640,46);
+      var dotColors = ['#C9A24B','#2a323d','#2a323d'];
+      dotColors.forEach(function(c,i){
+        tctx.beginPath();
+        tctx.arc(26 + i*24, 23, 6, 0, Math.PI*2);
+        tctx.fillStyle = c; tctx.fill();
+      });
+      tctx.fillStyle = '#7c8695';
+      tctx.font = '16px monospace';
+      tctx.fillText('sahmad-creator.github.io', 110, 29);
+      // body lines
+      tctx.fillStyle = '#ECE7DA';
+      tctx.font = 'bold 30px Georgia';
+      tctx.fillText('Shah Mohammad', 42, 110);
+      tctx.fillText('Ahmad Farooqui', 42, 150);
+      tctx.fillStyle = '#9BA3AF';
+      tctx.font = '18px sans-serif';
+      tctx.fillText('I build websites & campaigns.', 42, 190);
+      var chips = ['WordPress','SEO','Google Ads','Support'];
+      var cx = 42;
+      chips.forEach(function(c){
+        tctx.font = '13px monospace';
+        var w = tctx.measureText(c).width + 24;
+        tctx.strokeStyle = 'rgba(201,162,75,0.5)';
+        tctx.strokeRect(cx, 220, w, 30);
+        tctx.fillStyle = '#ECE7DA';
+        tctx.fillText(c, cx+12, 240);
+        cx += w + 10;
+      });
+      tctx.strokeStyle = '#2a323d';
+      tctx.beginPath(); tctx.moveTo(42,300); tctx.lineTo(598,300); tctx.stroke();
+      tctx.fillStyle = '#C9A24B';
+      tctx.font = '14px monospace';
+      tctx.fillText('sahmad-creator.github.io', 42, 330);
+    }
+    drawScreen();
+    var screenTexture = new THREE.CanvasTexture(tex);
+    screenTexture.needsUpdate = true;
+
+    // ---- device group: bezel box + screen plane + thin stand ----
+    var group = new THREE.Group();
+
+    var bezelGeo = new THREE.BoxGeometry(4.1, 2.7, 0.16);
+    var bezelMat = new THREE.MeshStandardMaterial({ color: 0x1c222b, roughness:0.55, metalness:0.35 });
+    var bezel = new THREE.Mesh(bezelGeo, bezelMat);
+    group.add(bezel);
+
+    var edges = new THREE.LineSegments(
+      new THREE.EdgesGeometry(bezelGeo),
+      new THREE.LineBasicMaterial({ color: 0xC9A24B, transparent:true, opacity:0.55 })
+    );
+    group.add(edges);
+
+    var screenGeo = new THREE.PlaneGeometry(3.86, 2.42);
+    var screenMat = new THREE.MeshBasicMaterial({ map: screenTexture });
+    var screen = new THREE.Mesh(screenGeo, screenMat);
+    screen.position.z = 0.082;
+    group.add(screen);
+
+    // thin stand beneath, subtle brand touch
+    var standGeo = new THREE.CylinderGeometry(0.05, 0.4, 0.12, 24);
+    var standMat = new THREE.MeshStandardMaterial({ color: 0x14181f, roughness:0.6, metalness:0.4 });
+    var stand = new THREE.Mesh(standGeo, standMat);
+    stand.position.set(0, -1.55, -0.1);
+    group.add(stand);
+
+    group.rotation.set(-0.12, 0.42, 0.02);
+    scene.add(group);
+
+    // ---- drag-to-rotate with inertia ----
+    var dragging = false;
+    var lastX = 0, lastY = 0;
+    var velX = 0, velY = 0;
+    var idleSpin = reduceMotion ? 0 : 0.0022;
+    var hintFaded = false;
+
+    function pointerDown(x, y){
+      dragging = true;
+      lastX = x; lastY = y;
+      velX = 0; velY = 0;
+      canvas.style.cursor = 'grabbing';
+    }
+    function pointerMove(x, y){
+      if(!dragging) return;
+      var dx = x - lastX, dy = y - lastY;
+      lastX = x; lastY = y;
+      group.rotation.y += dx * 0.008;
+      group.rotation.x += dy * 0.008;
+      group.rotation.x = Math.max(-0.9, Math.min(0.9, group.rotation.x));
+      velX = dx * 0.008;
+      velY = dy * 0.008;
+      if(!hintFaded && hint){ hint.classList.add('fade'); hintFaded = true; }
+    }
+    function pointerUp(){
+      dragging = false;
+      canvas.style.cursor = 'grab';
+    }
+
+    canvas.addEventListener('mousedown', function(e){ pointerDown(e.clientX, e.clientY); });
+    window.addEventListener('mousemove', function(e){ pointerMove(e.clientX, e.clientY); });
+    window.addEventListener('mouseup', pointerUp);
+
+    canvas.addEventListener('touchstart', function(e){
+      var t = e.touches[0]; pointerDown(t.clientX, t.clientY);
+    }, { passive:true });
+    canvas.addEventListener('touchmove', function(e){
+      var t = e.touches[0]; pointerMove(t.clientX, t.clientY);
+    }, { passive:true });
+    canvas.addEventListener('touchend', pointerUp);
+
+    var clock = new THREE.Clock();
+    function animate(){
+      requestAnimationFrame(animate);
+      var dt = clock.getDelta();
+
+      if(!dragging){
+        if(Math.abs(velX) > 0.0001 || Math.abs(velY) > 0.0001){
+          group.rotation.y += velX;
+          group.rotation.x += velY;
+          group.rotation.x = Math.max(-0.9, Math.min(0.9, group.rotation.x));
+          velX *= 0.94; velY *= 0.94;
+        } else {
+          group.rotation.y += idleSpin;
+        }
+      }
+      if(!reduceMotion){
+        group.position.y = Math.sin(clock.elapsedTime * 0.9) * 0.08;
+      }
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  })();
 
   /* ---------------- THREE.JS AMBIENT BACKGROUND ---------------- */
   var canvas = document.getElementById('bg-canvas');
