@@ -475,6 +475,40 @@
   }
 
   a:focus-visible, button:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+
+  /* ---------------- WHATSAPP FLOATING BUTTON ---------------- */
+  .wa-fab{
+    position:fixed; bottom:26px; right:26px; z-index:200;
+    width:58px; height:58px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.6);
+    transition: transform .25s;
+  }
+  .wa-fab:hover{ transform:scale(1.08); }
+  .wa-fab svg{ width:29px; height:29px; }
+  .wa-fab::before{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    background:#25D366; opacity:0.55;
+    animation: wa-pulse 2.2s ease-out infinite;
+  }
+  @keyframes wa-pulse{
+    0%{ transform:scale(1); opacity:0.55; }
+    100%{ transform:scale(1.9); opacity:0; }
+  }
+  .wa-tooltip{
+    position:absolute; right:70px; top:50%; transform:translateY(-50%);
+    background:var(--ink-2); color:var(--text-hi); border:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:12px; white-space:nowrap;
+    padding:8px 12px; opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  .wa-fab:hover .wa-tooltip{ opacity:1; }
+  @media (max-width:600px){
+    .wa-fab{ width:52px; height:52px; bottom:18px; right:18px; }
+    .wa-tooltip{ display:none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wa-fab::before{ animation:none; }
+  }
 </style>
 </head>
 <body>
@@ -483,6 +517,14 @@
 <div id="cursor-ring"></div>
 <div id="scroll-progress"></div>
 <canvas id="bg-canvas"></canvas>
+
+<a class="wa-fab" href="https://wa.me/917523005350?text=Hi%20Shah%2C%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-magnetic>
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.02 3C9.4 3 4 8.37 4 15c0 2.32.66 4.48 1.8 6.32L4 29l7.86-1.75A11.9 11.9 0 0 0 16.02 27C22.64 27 28 21.63 28 15S22.64 3 16.02 3z" fill="#25D366"/>
+    <path d="M22.4 18.2c-.34-.17-2-.99-2.3-1.1-.31-.11-.53-.17-.76.17-.22.34-.87 1.1-1.07 1.32-.2.22-.39.25-.73.08-.34-.17-1.43-.53-2.72-1.68-1-.9-1.68-2-1.88-2.34-.2-.34-.02-.52.15-.69.15-.15.34-.39.5-.59.17-.2.22-.34.34-.56.11-.22.06-.42-.03-.59-.08-.17-.76-1.84-1.05-2.52-.28-.66-.56-.57-.76-.58h-.65c-.22 0-.59.08-.9.42-.31.34-1.18 1.15-1.18 2.81 0 1.66 1.21 3.26 1.38 3.49.17.22 2.38 3.63 5.76 5.09.8.35 1.43.55 1.92.7.81.26 1.54.22 2.12.13.65-.1 2-.82 2.28-1.6.28-.79.28-1.47.2-1.6-.08-.14-.31-.22-.65-.39z" fill="#fff"/>
+  </svg>
+</a>
 
 <nav>
   <div class="wrap">
