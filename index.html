@@ -3,39 +3,39 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shah Mohammad Ahmad Farooqui — Web Developer & Digital Marketer</title>
+<title>Shah Mohammad Ahmad — AI & Data Analyst | Generative AI</title>
 
 <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="256x256" href="/assets/favicon-256.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta name="description" content="Portfolio of Shah Mohammad Ahmad Farooqui — BCA student skilled in WordPress website development, SEO, Google Ads, Meta Ads, and customer support. Based in Rudauli, Ayodhya, Uttar Pradesh, open to internship and full-time roles.">
-<meta name="keywords" content="Shah Mohammad Ahmad Farooqui, WordPress developer, digital marketing, web developer Lucknow, BCA student portfolio, customer support">
-<meta name="author" content="Shah Mohammad Ahmad Farooqui">
+<meta name="description" content="Portfolio of Shah Mohammad Ahmad — BCA student skilled in WordPress website development, SEO, Google Ads, Meta Ads. Based in Rudauli, Ayodhya, Uttar Pradesh, open to internship and full-time roles.">
+<meta name="keywords" content="Shah Mohammad Ahmad, WordPress developer, digital marketing, web developer Lucknow, BCA student portfolio">
+<meta name="author" content="Shah Mohammad Ahmad">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://sahmad-creator.github.io/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Shah Mohammad Ahmad Farooqui — Web Developer & Digital Marketer">
-<meta property="og:description" content="BCA student skilled in WordPress, SEO, Google Ads, Meta Ads, and customer support. Open to internship and full-time roles.">
+<meta property="og:title" content="Shah Mohammad Ahmad — AI & Data Analyst | Generative AI">
+<meta property="og:description" content="BCA student focused on AI/ML, Generative AI & Data Analytics, with hands-on WordPress and digital marketing experience.">
 <meta property="og:url" content="https://sahmad-creator.github.io/">
 <meta property="og:image" content="https://sahmad-creator.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shah Mohammad Ahmad Farooqui — Web Developer & Digital Marketer">
-<meta name="twitter:description" content="BCA student skilled in WordPress, SEO, Google Ads, Meta Ads, and customer support.">
+<meta name="twitter:title" content="Shah Mohammad Ahmad — AI & Data Analyst | Generative AI">
+<meta name="twitter:description" content="BCA student skilled in WordPress, SEO, Google Ads, and Meta Ads.">
 <meta name="twitter:image" content="https://sahmad-creator.github.io/assets/og-image.png">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Shah Mohammad Ahmad Farooqui",
+  "name": "Shah Mohammad Ahmad",
   "url": "https://sahmad-creator.github.io/",
   "image": "https://sahmad-creator.github.io/assets/og-image.png",
-  "jobTitle": "Web Developer & Digital Marketer",
-  "description": "BCA student skilled in WordPress website development, SEO, Google Ads, Meta Ads, and customer support.",
+  "jobTitle": "AI & Data Analyst | Generative AI & Digital Technology",
+  "description": "BCA student skilled in WordPress website development, SEO, Google Ads, and Meta Ads.",
   "email": "mailto:shahaliahmad.rdl@gmail.com",
   "telephone": "+91-7523005350",
   "address": {
@@ -48,7 +48,7 @@
     "@type": "CollegeOrUniversity",
     "name": "Amity University Online"
   },
-  "knowsAbout": ["WordPress", "Website Development", "SEO", "Social Media Marketing", "Google Ads", "Meta Ads", "Customer Support", "Data Entry"],
+  "knowsAbout": ["WordPress", "Website Development", "SEO", "Social Media Marketing", "Google Ads", "Meta Ads", "Responsive Design"],
   "sameAs": [
     "https://linkedin.com/in/shah-mohammad-ahmad-farooqui-780b4a272"
   ]
@@ -369,6 +369,47 @@
   }
   .card:hover .glow{ opacity:0.5; }
 
+  /* ---------- RESUME SECTION ---------- */
+  .resume-grid{ display:grid; grid-template-columns:1fr; gap:22px; margin-bottom:26px; perspective:1200px; }
+  .resume-card{
+    display:block; background:var(--ink-2); border:1px solid var(--line); padding:34px 30px;
+    transition: border-color .3s, transform .3s, box-shadow .3s; position:relative; overflow:hidden;
+  }
+  .resume-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--brass), var(--teal)); transform:scaleX(0); transform-origin:left; transition:transform .4s;
+  }
+  .resume-card:hover{ border-color:var(--brass-soft); transform:translateY(-6px); box-shadow:0 24px 50px -22px rgba(0,0,0,0.65); }
+  .resume-card:hover::before{ transform:scaleX(1); }
+  .rc-tag{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--brass); margin-bottom:16px; }
+  .resume-card h3{ font-size:22px; color:var(--text-hi); margin-bottom:10px; }
+  .resume-card p{ font-size:14px; color:var(--text-lo); line-height:1.65; margin-bottom:22px; }
+  .rc-link{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--brass-bright); }
+  .resume-skills{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; border-top:1px solid var(--line); padding-top:26px; }
+  .rs-title{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.07em; text-transform:uppercase; color:var(--teal); margin-bottom:8px; }
+  .rs-items{ font-size:13px; color:var(--text-hi); line-height:1.6; }
+  @media (max-width:880px){
+    .resume-grid, .resume-skills{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px){
+    .resume-grid, .resume-skills{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+  .cert-card{
+    background:var(--ink-2); border:1px solid var(--line); padding:22px 20px;
+    transition:border-color .3s, transform .3s;
+  }
+  .cert-card:hover{ border-color:var(--brass-soft); transform:translateY(-4px); }
+  .cert-org{ font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--brass); }
+  .cert-card h3{ font-size:15.5px; color:var(--text-hi); margin:10px 0 10px; line-height:1.4; font-weight:600; }
+  .cert-date{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-lo); }
+  .achievement-note{ font-size:13.5px; color:var(--text-lo); line-height:1.7; border-top:1px solid var(--line); padding-top:20px; }
+  .achievement-note b{ color:var(--brass-bright); }
+  @media (max-width:880px){ .cert-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:640px){ .cert-grid{ grid-template-columns:1fr; } }
+
   /* ---------- SKILLS ---------- */
   .skill-groups{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   .skill-group{
@@ -496,6 +537,79 @@
   @media (prefers-reduced-motion: reduce){
     .wa-fab::before{ animation:none; }
   }
+
+  /* ---------------- ASK SHAH CHAT WIDGET ---------------- */
+  .ask-fab{
+    position:fixed; bottom:26px; left:26px; z-index:200;
+    width:58px; height:58px; border-radius:50%;
+    background:var(--brass); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.6);
+    transition: transform .25s; border:none;
+  }
+  .ask-fab:hover{ transform:scale(1.08); }
+  .ask-fab svg{ width:26px; height:26px; }
+  .ask-badge{
+    position:absolute; top:-4px; right:-4px; width:16px; height:16px; border-radius:50%;
+    background:var(--teal); border:2px solid var(--ink);
+    animation: ask-ping 2s infinite;
+  }
+  @keyframes ask-ping{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.25); } }
+
+  .ask-panel{
+    position:fixed; bottom:96px; left:26px; z-index:200;
+    width:340px; max-width:calc(100vw - 40px); height:440px;
+    background:var(--ink-2); border:1px solid var(--brass-soft);
+    display:flex; flex-direction:column; overflow:hidden;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,0.75);
+    opacity:0; transform:translateY(16px) scale(0.97); pointer-events:none;
+    transition:opacity .25s, transform .25s;
+  }
+  .ask-panel.open{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+
+  .ask-head{
+    padding:16px 18px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .ask-head .dot{ width:8px; height:8px; border-radius:50%; background:var(--teal); }
+  .ask-head .title{ font-family:'Fraunces', serif; font-weight:600; font-size:15px; color:var(--text-hi); }
+  .ask-head .sub{ font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--text-lo); text-transform:uppercase; letter-spacing:0.05em; }
+  .ask-close{ margin-left:auto; background:none; border:none; color:var(--text-lo); font-size:18px; line-height:1; padding:4px; }
+  @media (hover:hover) and (pointer:fine){ .ask-close{ cursor:none; } }
+
+  .ask-body{ flex:1; overflow-y:auto; padding:16px 18px; display:flex; flex-direction:column; gap:12px; }
+  .ask-msg{ max-width:85%; font-size:13.5px; line-height:1.55; padding:10px 13px; }
+  .ask-msg.bot{ background:var(--ink-3); color:var(--text-hi); align-self:flex-start; border-left:2px solid var(--brass); }
+  .ask-msg.user{ background:var(--brass); color:var(--ink); align-self:flex-end; font-weight:500; }
+  .ask-typing{ display:flex; gap:4px; padding:10px 13px; align-self:flex-start; }
+  .ask-typing span{ width:5px; height:5px; border-radius:50%; background:var(--text-lo); animation:ask-bounce 1.2s infinite; }
+  .ask-typing span:nth-child(2){ animation-delay:.15s; }
+  .ask-typing span:nth-child(3){ animation-delay:.3s; }
+  @keyframes ask-bounce{ 0%,60%,100%{ transform:translateY(0); opacity:0.4; } 30%{ transform:translateY(-4px); opacity:1; } }
+
+  .ask-chips{ display:flex; flex-wrap:wrap; gap:6px; padding:0 18px 12px; }
+  .ask-chip{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; border:1px solid var(--line);
+    color:var(--text-lo); padding:6px 10px; background:none; transition:border-color .2s, color .2s;
+  }
+  .ask-chip:hover{ border-color:var(--brass); color:var(--text-hi); }
+  @media (hover:hover) and (pointer:fine){ .ask-chip{ cursor:none; } }
+
+  .ask-input-row{ display:flex; gap:8px; padding:14px 18px; border-top:1px solid var(--line); }
+  .ask-input-row input{
+    flex:1; background:var(--ink); border:1px solid var(--line); color:var(--text-hi);
+    padding:10px 12px; font-family:'Inter', sans-serif; font-size:13.5px;
+  }
+  .ask-input-row input:focus{ outline:none; border-color:var(--brass); }
+  .ask-input-row button{
+    background:var(--brass); color:var(--ink); border:none; padding:0 16px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:500;
+  }
+  @media (hover:hover) and (pointer:fine){ .ask-input-row button{ cursor:none; } }
+
+  @media (max-width:600px){
+    .ask-fab{ width:52px; height:52px; bottom:18px; left:18px; }
+    .ask-panel{ left:14px; bottom:82px; width:calc(100vw - 28px); height:420px; }
+  }
 </style>
 </head>
 <body>
@@ -513,14 +627,38 @@
   </svg>
 </a>
 
+<button class="ask-fab" id="ask-fab" aria-label="Ask Shah a question" data-magnetic>
+  <span class="ask-badge"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#10141A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+
+<div class="ask-panel" id="ask-panel">
+  <div class="ask-head">
+    <span class="dot"></span>
+    <div>
+      <div class="title">Ask Shah</div>
+      <div class="sub">Usually replies instantly</div>
+    </div>
+    <button class="ask-close" id="ask-close" aria-label="Close chat">✕</button>
+  </div>
+  <div class="ask-body" id="ask-body"></div>
+  <div class="ask-chips" id="ask-chips"></div>
+  <div class="ask-input-row">
+    <input type="text" id="ask-input" placeholder="Type a question..." autocomplete="off">
+    <button id="ask-send">Send</button>
+  </div>
+</div>
+
 <nav>
   <div class="wrap">
-    <a href="#top" class="brand"><span class="mark"><span>SF</span></span> Shah Mohammad Ahmad Farooqui</a>
+    <a href="#top" class="brand"><span class="mark"><span>SF</span></span> Shah Mohammad Ahmad</a>
     <div class="navlinks">
       <a href="#about">Profile</a>
       <a href="#experience">Experience</a>
       <a href="#work">Work</a>
       <a href="#skills">Skills</a>
+      <a href="#resume">Resume</a>
+      <a href="#certifications">Certifications</a>
       <a href="#education">Education</a>
     </div>
     <a class="nav-cta" href="#contact" data-magnetic>Get In Touch</a>
@@ -530,21 +668,21 @@
 <header id="top" class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="eyebrow reveal">BCA Student · Open to Work</div>
-      <div class="hero-name reveal">Shah Mohammad Ahmad Farooqui</div>
-      <h1 class="reveal">I build websites<br>&amp; <em>campaigns</em>.</h1>
-      <p class="hero-sub reveal"><span id="year-word-1">First-year</span> BCA student at Amity University Online who'd rather learn by shipping than by waiting. Hands-on with WordPress, SEO, paid ads, and customer support — across hotels, insurance, and schools.</p>
+      <div class="eyebrow reveal">AI &amp; Data Analyst · Open to Work</div>
+      <div class="hero-name reveal">Shah Mohammad Ahmad</div>
+      <h1 class="reveal">I work with <em>AI</em><br>&amp; data.</h1>
+      <p class="hero-sub reveal"><span id="year-word-1">First-year</span> BCA student focused on AI/ML, Generative AI, and data analytics — with WordPress and digital marketing as hands-on side work. Hands-on across hotels, insurance, and schools.</p>
       <div class="hero-tags reveal">
+        <span class="tag">Generative AI</span>
+        <span class="tag">AI/ML</span>
+        <span class="tag">Data Analytics</span>
+        <span class="tag">Prompt Engineering</span>
         <span class="tag">WordPress</span>
-        <span class="tag">SEO</span>
-        <span class="tag">Google &amp; Meta Ads</span>
-        <span class="tag">Customer Support</span>
-        <span class="tag">Data Entry</span>
       </div>
       <div class="hero-cta reveal">
         <a class="btn-primary" href="mailto:shahaliahmad.rdl@gmail.com" data-magnetic>Email Me →</a>
         <a class="btn-secondary" href="tel:7523005350" data-magnetic data-phone="7523005350">Call · 75230 05350<span class="copied-toast">Number copied!</span></a>
-        <a class="btn-secondary" href="/assets/Shah_Farooqui_Resume.pdf" download data-magnetic>Download Resume ↓</a>
+        <a class="btn-secondary" href="/assets/Shah_Mohammad_Ahmad_Resume.pdf" download data-magnetic>Download Resume ↓</a>
       </div>
     </div>
     <div class="hero-visual" id="hero-visual">
@@ -574,14 +712,14 @@
     </div>
     <div class="about-body">
       <div class="about-side">
-        <div class="item reveal"><div class="k">Full Name</div><div class="v">Shah Mohammad Ahmad Farooqui</div></div>
+        <div class="item reveal"><div class="k">Full Name</div><div class="v">Shah Mohammad Ahmad</div></div>
         <div class="item reveal"><div class="k">Based In</div><div class="v">Rudauli, Ayodhya, UP</div></div>
         <div class="item reveal"><div class="k">Open To</div><div class="v">WFH &amp; On-site</div></div>
         <div class="item reveal"><div class="k">Preferred City</div><div class="v">Lucknow, UP</div></div>
         <div class="item reveal"><div class="k">Formats</div><div class="v">Full-time · Part-time · Internship</div></div>
       </div>
       <div>
-        <p class="reveal">I'm Shah Mohammad Ahmad Farooqui, a <span id="year-word-2">first-year</span> BCA student studying online through Amity University while actively looking for internship, part-time, and full-time work — in Customer Support, Chat Support, Back Office, Data Entry, Web Development, or Digital Marketing.</p>
+        <p class="reveal">I'm Shah Mohammad Ahmad, a <span id="year-word-2">first-year</span> BCA student studying online through Amity University, focused on AI/ML, Generative AI, and data analytics — while actively looking for internship, part-time, and full-time work. WordPress and digital marketing are hands-on side work I do alongside it.</p>
         <p class="reveal">Rather than wait for a classroom to hand me experience, I went looking for it myself — building WordPress sites for real business and institutional use cases, and running digital marketing activity across SEO, social, Google Ads, and Meta Ads alongside it.</p>
         <p class="reveal">I pick things up fast, I like solving problems more than I like talking about them, and I'm genuinely comfortable on the phone or in a chat window with a customer. Technology is the part I enjoy most.</p>
       </div>
@@ -609,7 +747,7 @@
           <li>Currently building and working on multiple website projects using WordPress across different business and institutional use cases.</li>
           <li>Project exposure spanned hotel, insurance company, school, and other business websites.</li>
           <li>Ran digital marketing activity including SEO, social media marketing, Google Ads, and Meta Ads.</li>
-          <li>Comfortable with customer support and data-entry work — and genuinely interested in client-facing roles.</li>
+          <li>Comfortable working directly with business use cases end-to-end — understanding requirements, structuring the site, and iterating based on feedback.</li>
         </ul>
       </div>
     </div>
@@ -642,18 +780,62 @@
     </div>
     <div class="skill-groups">
       <div class="skill-group reveal">
-        <div class="gk">Web &amp; CMS</div>
-        <div class="chips"><span class="chip">WordPress</span><span class="chip">Website Development</span></div>
+        <div class="gk">Generative AI &amp; AI/ML</div>
+        <div class="chips"><span class="chip">Generative AI</span><span class="chip">Prompt Engineering</span><span class="chip">AI Capabilities &amp; Limitations</span><span class="chip">AI/ML</span></div>
       </div>
       <div class="skill-group reveal">
-        <div class="gk">Digital Marketing</div>
-        <div class="chips"><span class="chip">SEO</span><span class="chip">Social Media Marketing</span><span class="chip">Google Ads</span><span class="chip">Meta Ads</span></div>
+        <div class="gk">Data Analytics</div>
+        <div class="chips"><span class="chip">Geodata Analytics</span><span class="chip">AI-Assisted Data Analytics</span><span class="chip">Business Reporting</span></div>
       </div>
       <div class="skill-group reveal">
-        <div class="gk">Job Skills</div>
-        <div class="chips"><span class="chip">Customer Support</span><span class="chip">Customer Service</span><span class="chip">Data Entry</span><span class="chip">Communication</span><span class="chip">Problem Solving</span></div>
+        <div class="gk">Digital Marketing &amp; Web (Side Work)</div>
+        <div class="chips"><span class="chip">WordPress</span><span class="chip">SEO</span><span class="chip">Google &amp; Meta Ads</span><span class="chip">Social Media</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow reveal">Resume</div>
+      <div class="reveal"><h2>Take it with you</h2><p class="desc">One clean page with my skills, experience, and portfolio link.</p></div>
+    </div>
+    <div class="resume-grid">
+      <a class="resume-card reveal" href="/assets/Shah_Mohammad_Ahmad_Resume.pdf" download data-magnetic>
+        <div class="rc-tag">Resume · PDF</div>
+        <h3>Shah Mohammad Ahmad</h3>
+        <p>Web Developer / Web Designer · WordPress, HTML &amp; CSS, Responsive Design, SEO, Google &amp; Meta Ads. Clean single-column format that reads well everywhere — email, LinkedIn, and job portals.</p>
+        <span class="rc-link">Download Resume ↓</span>
+      </a>
+    </div>
+    <div class="resume-skills reveal">
+      <div class="rs-col"><div class="rs-title">Web Development</div><div class="rs-items">WordPress · Website Development · HTML &amp; CSS · Responsive Design</div></div>
+      <div class="rs-col"><div class="rs-title">Digital Marketing &amp; SEO</div><div class="rs-items">SEO Strategy · Social Media &amp; Content Strategy · Google Ads · Meta Ads</div></div>
+      <div class="rs-col"><div class="rs-title">Generative AI &amp; Prompt Engineering</div><div class="rs-items">Generative AI Fundamentals · AI Capabilities &amp; Limitations · Prompt Engineering</div></div>
+      <div class="rs-col"><div class="rs-title">Data Analytics &amp; Visualization</div><div class="rs-items">AI/ML for Geodata Analytics · AI-Assisted Data Analytics · Business Reporting</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow reveal">Certifications</div>
+      <div class="reveal"><h2>Verified learning</h2><p class="desc">Certificates completed alongside coursework and freelance work.</p></div>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal"><span class="cert-org">Anthropic</span><h3>AI Capabilities and Limitations</h3><span class="cert-date">Claude Academy · Sep 2026</span></div>
+      <div class="cert-card reveal"><span class="cert-org">ISRO · IIRS Dehradun</span><h3>AI/ML for Geodata Analytics</h3><span class="cert-date">Sep 2026</span></div>
+      <div class="cert-card reveal"><span class="cert-org">Cisco Networking Academy</span><h3>Core Generative AI Skills</h3><span class="cert-date">Sep 2026</span></div>
+      <div class="cert-card reveal"><span class="cert-org">IBM SkillsBuild</span><h3>AI Fundamentals: Foundations for Understanding AI</h3><span class="cert-date">Sep 2026</span></div>
+      <div class="cert-card reveal"><span class="cert-org">Forage &times; Tata</span><h3>GenAI Powered Data Analytics Job Simulation</h3><span class="cert-date">Sep 2026</span></div>
+      <div class="cert-card reveal"><span class="cert-org">Amity University Online</span><h3>Certificate Course in Basic of AI</h3><span class="cert-date">Sep 2026</span></div>
+      <div class="cert-card reveal"><span class="cert-org">Amity University Online</span><h3>Professional and Life Skills</h3><span class="cert-date">Sep 2026</span></div>
+      <div class="cert-card reveal"><span class="cert-org">LearnTube by CareerNinja</span><h3>Intro to SEO with Types and Strategies</h3><span class="cert-date">2023</span></div>
+      <div class="cert-card reveal"><span class="cert-org">Digital Azadi School</span><h3>Basic Digital Marketing Course</h3><span class="cert-date">LokNeeti 2.0 · 2023</span></div>
+    </div>
+    <div class="achievement-note reveal"><b>INSPIRE MANAK Award</b> — ₹10,000 grant from the Dept. of Science &amp; Technology, Govt. of India, for a Class 12 science project selected for District Level Exhibition &amp; Project Competitions (2026).</div>
   </div>
 </section>
 
@@ -679,12 +861,12 @@
         <div class="reveal"><h2>Let's build<br>something <em>real</em>.</h2></div>
         <p class="contact-desc reveal">Open to internship, part-time, and full-time roles — remote or on-site. If there's a support desk, a website, or a campaign that needs hands, I'm interested.</p>
         <ul class="contact-list">
-          <li class="reveal"><span class="ck">Full Name</span><span class="cv">Shah Mohammad Ahmad Farooqui</span></li>
+          <li class="reveal"><span class="ck">Full Name</span><span class="cv">Shah Mohammad Ahmad</span></li>
           <li class="reveal"><span class="ck">Phone</span><a class="cv" href="tel:7523005350" data-magnetic data-phone="7523005350">75230 05350<span class="copied-toast">Number copied!</span></a></li>
           <li class="reveal"><span class="ck">Email</span><a class="cv" href="mailto:shahaliahmad.rdl@gmail.com" data-magnetic>shahaliahmad.rdl@gmail.com</a></li>
           <li class="reveal"><span class="ck">Location</span><span class="cv">Rudauli, Ayodhya, Uttar Pradesh</span></li>
           <li class="reveal"><span class="ck">LinkedIn</span><a class="cv" href="https://linkedin.com/in/shah-mohammad-ahmad-farooqui-780b4a272" target="_blank" rel="noopener" data-magnetic>/shah-mohammad-ahmad-farooqui</a></li>
-          <li class="reveal"><span class="ck">Resume</span><a class="cv" href="/assets/Shah_Farooqui_Resume.pdf" download data-magnetic>Download PDF ↓</a></li>
+          <li class="reveal"><span class="ck">Resume</span><a class="cv" href="/assets/Shah_Mohammad_Ahmad_Resume.pdf" download data-magnetic>Download PDF ↓</a></li>
         </ul>
       </div>
       <div class="avail-box reveal">
@@ -716,7 +898,7 @@
       </form>
     </div>
     <footer>
-      <span>© <span id="copyright-year">2026</span> Shah Mohammad Ahmad Farooqui</span>
+      <span>© <span id="copyright-year">2026</span> Shah Mohammad Ahmad</span>
       <span>Rudauli, Ayodhya · Uttar Pradesh</span>
     </footer>
   </div>
@@ -833,6 +1015,131 @@
     });
   }
 
+  /* ---------------- ASK SHAH CHAT WIDGET ---------------- */
+  (function(){
+    var fab = document.getElementById('ask-fab');
+    var panel = document.getElementById('ask-panel');
+    var closeBtn = document.getElementById('ask-close');
+    var body = document.getElementById('ask-body');
+    var chipsWrap = document.getElementById('ask-chips');
+    var input = document.getElementById('ask-input');
+    var sendBtn = document.getElementById('ask-send');
+    if(!fab || !panel) return;
+
+    var opened = false;
+    var greeted = false;
+
+    var STARTER_CHIPS = ['What are your skills?', 'Are you open to work?', 'How do I contact you?', 'Tell me about your experience'];
+
+    var RULES = [
+      { keys:['skill','know','wordpress','seo','ads','good at'],
+        reply:"I work with WordPress & website development, SEO, social media marketing, Google Ads, and Meta Ads — plus responsive design and clean communication. Basically: I can build the site and help market it too." },
+      { keys:['experience','project','work','built','portfolio','website'],
+        reply:"I've built and worked on multiple WordPress sites across hotels, insurance businesses, and schools — plus hands-on digital marketing campaigns alongside them. Check the 'Selected Exposure' section above for details." },
+      { keys:['available','open','hire','internship','job','work with you','opportunit'],
+        reply:"Yes — I'm actively open to internship, part-time, and full-time roles, remote or on-site. Preferred location is Lucknow, UP, but I'm flexible." },
+      { keys:['contact','email','phone','number','reach','call'],
+        reply:"Best ways: email at shahaliahmad.rdl@gmail.com or call/WhatsApp at 75230 05350. There's also a contact form further down this page — I read every message." },
+      { keys:['resume','cv','download'],
+        reply:"You can download my resume right from the hero section or the Contact section — look for the 'Download Resume' button." },
+      { keys:['education','study','bca','college','university','degree'],
+        reply:"I'm currently pursuing a BCA (Bachelor of Computer Applications) through Amity University Online." },
+      { keys:['location','where','based','live','city'],
+        reply:"I'm based in Rudauli, Ayodhya, Uttar Pradesh — but open to remote work or relocating for the right opportunity." },
+      { keys:['salary','pay','stipend','compensation','ctc'],
+        reply:"That's best discussed directly — drop me a message via the contact form or email and I'll get back to you." },
+      { keys:['language','hindi','english','urdu'],
+        reply:"I'm comfortable in English, Hindi, and Urdu." },
+      { keys:['who are you','what are you','about you','yourself'],
+        reply:"I'm Shah Mohammad Ahmad — a BCA student who builds WordPress sites and runs digital marketing campaigns on the side. This little chat widget you're using? Also something I put together." },
+      { keys:['hello','hi','hey','namaste'],
+        reply:"Hey! Good to see you here. Ask me anything about my skills, experience, or how to get in touch." },
+      { keys:['thank', 'thanks'],
+        reply:"Anytime! Feel free to reach out directly if you'd like to talk further." },
+      { keys:['whatsapp'],
+        reply:"You can reach me on WhatsApp using the green button in the bottom-right corner of this page." }
+    ];
+
+    var FALLBACK = "I'm a simple rule-based assistant, so I might've missed that one — but I can tell you about my skills, experience, education, availability, or how to contact me. Try one of the quick options below, or reach out directly via the contact form.";
+
+    function addMessage(text, who){
+      var el = document.createElement('div');
+      el.className = 'ask-msg ' + who;
+      el.textContent = text;
+      body.appendChild(el);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function showTyping(cb){
+      var t = document.createElement('div');
+      t.className = 'ask-typing';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      body.appendChild(t);
+      body.scrollTop = body.scrollHeight;
+      setTimeout(function(){
+        t.remove();
+        cb();
+      }, 500 + Math.random()*400);
+    }
+
+    function respond(userText){
+      var lower = userText.toLowerCase();
+      var match = RULES.find(function(r){
+        return r.keys.some(function(k){ return lower.indexOf(k) !== -1; });
+      });
+      showTyping(function(){
+        addMessage(match ? match.reply : FALLBACK, 'bot');
+        renderChips();
+      });
+    }
+
+    function renderChips(){
+      chipsWrap.innerHTML = '';
+      STARTER_CHIPS.forEach(function(c){
+        var b = document.createElement('button');
+        b.className = 'ask-chip';
+        b.textContent = c;
+        b.addEventListener('click', function(){ handleUserInput(c); });
+        chipsWrap.appendChild(b);
+      });
+    }
+
+    function handleUserInput(text){
+      text = text.trim();
+      if(!text) return;
+      addMessage(text, 'user');
+      input.value = '';
+      respond(text);
+    }
+
+    function openPanel(){
+      panel.classList.add('open');
+      opened = true;
+      if(!greeted){
+        greeted = true;
+        showTyping(function(){
+          addMessage("Hi, I'm a quick-reply assistant standing in for Shah — ask me about skills, experience, or how to get in touch.", 'bot');
+          renderChips();
+        });
+      }
+      setTimeout(function(){ input.focus(); }, 200);
+    }
+    function closePanel(){
+      panel.classList.remove('open');
+      opened = false;
+    }
+
+    fab.addEventListener('click', function(){ opened ? closePanel() : openPanel(); });
+    closeBtn.addEventListener('click', closePanel);
+    sendBtn.addEventListener('click', function(){ handleUserInput(input.value); });
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ handleUserInput(input.value); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && opened) closePanel();
+    });
+  })();
+
   /* ---------------- PHONE COPY FEEDBACK ---------------- */
   document.querySelectorAll('[data-phone]').forEach(function(el){
     el.addEventListener('click', function(){
@@ -909,13 +1216,19 @@
     window.addEventListener('resize', sizeCanvas);
 
     // lighting — gives the bezel real shaded depth
-    scene.add(new THREE.AmbientLight(0x404850, 1.4));
-    var key = new THREE.DirectionalLight(0xffffff, 1.1);
+    scene.add(new THREE.AmbientLight(0x404850, 1.1));
+    var key = new THREE.DirectionalLight(0xffffff, 1.3);
     key.position.set(3, 4, 5);
     scene.add(key);
-    var rim = new THREE.DirectionalLight(0xC9A24B, 0.6);
+    var rim = new THREE.DirectionalLight(0xC9A24B, 0.9);
     rim.position.set(-4, -2, -3);
     scene.add(rim);
+    var fill = new THREE.DirectionalLight(0x4C9088, 0.4);
+    fill.position.set(-2, -3, 4);
+    scene.add(fill);
+    var glossPoint = new THREE.PointLight(0xE8C46E, 1.2, 12, 2);
+    glossPoint.position.set(2, 3, 4);
+    scene.add(glossPoint);
 
     // ---- build the "browser window" screen texture ----
     var tex = document.createElement('canvas');
@@ -940,7 +1253,7 @@
       tctx.fillStyle = '#ECE7DA';
       tctx.font = 'bold 30px Georgia';
       tctx.fillText('Shah Mohammad', 42, 110);
-      tctx.fillText('Ahmad Farooqui', 42, 150);
+      tctx.fillText('Ahmad', 42, 150);
       tctx.fillStyle = '#9BA3AF';
       tctx.font = '18px sans-serif';
       tctx.fillText('I build websites & campaigns.', 42, 190);
@@ -969,13 +1282,16 @@
     var group = new THREE.Group();
 
     var bezelGeo = new THREE.BoxGeometry(4.1, 2.7, 0.16);
-    var bezelMat = new THREE.MeshStandardMaterial({ color: 0x1c222b, roughness:0.55, metalness:0.35 });
+    var bezelMat = new THREE.MeshPhysicalMaterial({
+      color: 0x1c222b, roughness:0.35, metalness:0.55,
+      clearcoat:0.6, clearcoatRoughness:0.25
+    });
     var bezel = new THREE.Mesh(bezelGeo, bezelMat);
     group.add(bezel);
 
     var edges = new THREE.LineSegments(
       new THREE.EdgesGeometry(bezelGeo),
-      new THREE.LineBasicMaterial({ color: 0xC9A24B, transparent:true, opacity:0.55 })
+      new THREE.LineBasicMaterial({ color: 0xC9A24B, transparent:true, opacity:0.7 })
     );
     group.add(edges);
 
@@ -985,12 +1301,51 @@
     screen.position.z = 0.082;
     group.add(screen);
 
+    // subtle emissive glow rim just behind the screen edge (fake bloom)
+    var glowGeo = new THREE.PlaneGeometry(4.28, 2.88);
+    var glowMat = new THREE.MeshBasicMaterial({ color: 0xC9A24B, transparent:true, opacity:0.10 });
+    var glowPlane = new THREE.Mesh(glowGeo, glowMat);
+    glowPlane.position.z = -0.09;
+    group.add(glowPlane);
+
     // thin stand beneath, subtle brand touch
     var standGeo = new THREE.CylinderGeometry(0.05, 0.4, 0.12, 24);
-    var standMat = new THREE.MeshStandardMaterial({ color: 0x14181f, roughness:0.6, metalness:0.4 });
+    var standMat = new THREE.MeshPhysicalMaterial({ color: 0x14181f, roughness:0.4, metalness:0.6, clearcoat:0.4 });
     var stand = new THREE.Mesh(standGeo, standMat);
     stand.position.set(0, -1.55, -0.1);
     group.add(stand);
+
+    // soft grounded shadow ellipse beneath the device
+    var shadowCanvas = document.createElement('canvas');
+    shadowCanvas.width = 256; shadowCanvas.height = 128;
+    var sctx = shadowCanvas.getContext('2d');
+    var grad = sctx.createRadialGradient(128,64,4,128,64,120);
+    grad.addColorStop(0, 'rgba(0,0,0,0.45)');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    sctx.fillStyle = grad;
+    sctx.fillRect(0,0,256,128);
+    var shadowTex = new THREE.CanvasTexture(shadowCanvas);
+    var shadowMat = new THREE.MeshBasicMaterial({ map: shadowTex, transparent:true, depthWrite:false });
+    var shadowMesh = new THREE.Mesh(new THREE.PlaneGeometry(4.6, 1.7), shadowMat);
+    shadowMesh.position.set(0, -1.85, -0.3);
+    shadowMesh.rotation.x = -Math.PI/2.4;
+    scene.add(shadowMesh);
+
+    // small orbiting brass particles for ambient richness around the device
+    var orbitParticles = [];
+    var orbitGroup = new THREE.Group();
+    for(var op=0; op<10; op++){
+      var opGeo = new THREE.SphereGeometry(0.02 + Math.random()*0.02, 8, 8);
+      var opMat = new THREE.MeshBasicMaterial({ color: op % 3 === 0 ? 0x4C9088 : 0xC9A24B, transparent:true, opacity:0.75 });
+      var opMesh = new THREE.Mesh(opGeo, opMat);
+      var radius = 2.6 + Math.random()*1.1;
+      var angle = Math.random()*Math.PI*2;
+      var vSpeed = 0.15 + Math.random()*0.25;
+      var vTilt = (Math.random()-0.5)*0.6;
+      orbitParticles.push({ mesh:opMesh, radius:radius, angle:angle, speed:vSpeed, tilt:vTilt, yOff:(Math.random()-0.5)*1.4 });
+      orbitGroup.add(opMesh);
+    }
+    scene.add(orbitGroup);
 
     group.rotation.set(-0.12, 0.42, 0.02);
     scene.add(group);
@@ -1053,6 +1408,19 @@
       }
       if(!reduceMotion){
         group.position.y = Math.sin(clock.elapsedTime * 0.9) * 0.08;
+
+        // orbiting particles around the device
+        orbitParticles.forEach(function(p){
+          p.angle += p.speed * dt;
+          p.mesh.position.x = Math.cos(p.angle) * p.radius;
+          p.mesh.position.z = Math.sin(p.angle) * p.radius * 0.55;
+          p.mesh.position.y = p.yOff + Math.sin(p.angle*1.6 + p.tilt) * 0.3;
+        });
+
+        // slowly sweeping gloss light for a living-metal shimmer
+        glossPoint.position.x = Math.cos(clock.elapsedTime * 0.5) * 3;
+        glossPoint.position.y = 2.5 + Math.sin(clock.elapsedTime * 0.7) * 1;
+        glowMat.opacity = 0.08 + Math.sin(clock.elapsedTime * 1.4) * 0.04;
       }
 
       renderer.render(scene, camera);
@@ -1100,8 +1468,8 @@
     { label:'WordPress', radius:5.6, speed:0.55, offset:0, tilt:0.25, color:0xC9A24B },
     { label:'SEO', radius:6.4, speed:0.4, offset:1.3, tilt:-0.35, color:0x4C9088 },
     { label:'Google Ads', radius:5.0, speed:0.65, offset:2.7, tilt:0.55, color:0xC9A24B },
-    { label:'Customer Support', radius:6.8, speed:0.35, offset:4.1, tilt:-0.15, color:0x4C9088 },
-    { label:'Data Entry', radius:5.8, speed:0.5, offset:5.3, tilt:0.4, color:0xC9A24B }
+    { label:'Responsive Design', radius:6.8, speed:0.35, offset:4.1, tilt:-0.15, color:0x4C9088 },
+    { label:'Social Media', radius:5.8, speed:0.5, offset:5.3, tilt:0.4, color:0xC9A24B }
   ];
   var nodes = [];
   skillDefs.forEach(function(def){
